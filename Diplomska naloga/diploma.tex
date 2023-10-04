@@ -1,0 +1,149 @@
+\documentclass[mat1, tisk]{fmfdelo}
+% \documentclass[fin1, tisk]{fmfdelo}
+% Če pobrišete možnost tisk, bodo povezave obarvane,
+% na začetku pa ne bo praznih strani po naslovu, …
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% METAPODATKI
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% - vaše ime
+\avtor{Anej Rozman}
+
+% - naslov dela v slovenščini
+\naslov{Lévijevi procesi in njihova uporaba pri napovedovanje gibanja cen vrednostnih papirjev}
+
+% - naslov dela v angleščini
+\title{Lévy processes and their application in predicting the movement of securities prices}
+
+% - ime mentorja/mentorice s polnim nazivom:
+\mentor{izr.~prof.~dr.~Mihael Perman}
+
+% - leto diplome
+\letnica{2024} 
+
+
+
+% - povzetek v slovenščini
+%   V povzetku na kratko opišite vsebinske rezultate dela. Sem ne sodi razlaga
+%   organizacije dela, torej v katerem razdelku je kaj, pač pa le opis vsebine.
+\povzetek{TODO}
+
+% - povzetek v angleščini
+\abstract{TODO}
+
+% - klasifikacijske oznake, ločene z vejicami
+%   Oznake, ki opisujejo področje dela, so dostopne na strani https://www.ams.org/msc/
+\klasifikacija{68R10, 68W10, 68N18, 68N19, 05C85}
+
+% - ključne besede, ki nastopajo v delu, ločene s \sep
+\kljucnebesede{TODO}
+
+% - angleški prevod ključnih besed
+\keywords{TODO} % angleški prevod ključnih besed
+
+% - angleško-slovenski slovar strokovnih izrazov
+\slovar{
+\geslo{high performance computing}{Visokozmožnostno računanje}
+\geslo{domains}{domene}
+\geslo{parallel tasks}{vzporedne naloge}
+\geslo{task collections}{zbirke opravil}
+\geslo{parallel computation patterns}{vzorci vzporednega računanja}
+\geslo{synchronization primitives}{sinhronizacijski mehanizmi}
+\geslo{load balancing}{Izravnavanje obremenitve}
+\geslo{high-level}{visokonivojski}
+\geslo{code wrapper}{programski ovoj}
+\geslo{adjaceny list}{seznam sosednosti}
+\geslo{shared memory}{skupni pomnilnik}
+\geslo{distributed memory}{porazdeljeni pomnilnik}
+\geslo{thread race}{dirka podatkov} % TODO: Je to dober prevod?
+\geslo{vzajemna izključitev}{mutex}
+\geslo{overhead}{dodatna računska obremenitev}
+}
+
+% - ime datoteke z viri (vključno s končnico .bib), če uporabljate BibTeX
+
+\literatura{literatura.bib}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DODATNE DEFINICIJE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% naložite dodatne pakete, ki jih potrebujete
+\usepackage{algpseudocode}  % za psevdokodo
+\usepackage{algorithm}      % za algoritme
+\usepackage{algorithmicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{shapes,arrows}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    citecolor=red
+}
+
+% Set the font size for all listings
+\lstset{basicstyle=\footnotesize\ttfamily}
+
+\algnewcommand\algorithmicto{\textbf{to}}
+\algnewcommand\algorithmicin{\textbf{in}}
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algrenewtext{For}[3]{\algorithmicfor\ #1 $\gets$ #2\ \algorithmicto\ #3\ \algorithmicdo}
+\algdef{S}[FOR]{ForEach}[2]{\algorithmicforeach\ #1\ \algorithmicin\ #2\ \algorithmicdo}
+
+
+\floatname{algorithm}{Algoritem}
+\renewcommand{\listalgorithmname}{Kazalo algoritmov}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+
+\lstdefinelanguage{OCaml}{
+  keywords={let,rec,if,then,else,module},
+  sensitive=true,
+  basicstyle=\ttfamily,
+  keywordstyle=\bfseries,
+  showstringspaces=false,
+  morecomment=[s]{(*}{*)},
+  morestring=[b]"
+}
+
+\lstset{
+  language=Caml,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  tabsize=2,
+  breaklines=true,
+  prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+  showtabs=false,
+  showspaces=false,
+  showstringspaces=false,
+  basicstyle=\ttfamily\small,
+  identifierstyle=\ttfamily\small,
+  commentstyle=\color{gray}\ttfamily\small,
+  keywordstyle=\color{blue}\ttfamily\small,
+  stringstyle=\color{red}\ttfamily\small
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ZAČETEK VSEBINE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\section{Uvod}
+\cite{levy_processes}
+\end{document}
