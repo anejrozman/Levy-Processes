@@ -1,149 +1,203 @@
-\documentclass[mat1, tisk]{fmfdelo}
-% \documentclass[fin1, tisk]{fmfdelo}
-% Če pobrišete možnost tisk, bodo povezave obarvane,
-% na začetku pa ne bo praznih strani po naslovu, …
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% METAPODATKI
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% - vaše ime
-\avtor{Anej Rozman}
-
-% - naslov dela v slovenščini
-\naslov{Lévijevi procesi in njihova uporaba pri napovedovanje gibanja cen vrednostnih papirjev}
-
-% - naslov dela v angleščini
-\title{Lévy processes and their application in predicting the movement of securities prices}
-
-% - ime mentorja/mentorice s polnim nazivom:
-\mentor{izr.~prof.~dr.~Mihael Perman}
-
-% - leto diplome
-\letnica{2024} 
-
-
-
-% - povzetek v slovenščini
-%   V povzetku na kratko opišite vsebinske rezultate dela. Sem ne sodi razlaga
-%   organizacije dela, torej v katerem razdelku je kaj, pač pa le opis vsebine.
-\povzetek{TODO}
-
-% - povzetek v angleščini
-\abstract{TODO}
-
-% - klasifikacijske oznake, ločene z vejicami
-%   Oznake, ki opisujejo področje dela, so dostopne na strani https://www.ams.org/msc/
-\klasifikacija{68R10, 68W10, 68N18, 68N19, 05C85}
-
-% - ključne besede, ki nastopajo v delu, ločene s \sep
-\kljucnebesede{TODO}
-
-% - angleški prevod ključnih besed
-\keywords{TODO} % angleški prevod ključnih besed
-
-% - angleško-slovenski slovar strokovnih izrazov
-\slovar{
-\geslo{high performance computing}{Visokozmožnostno računanje}
-\geslo{domains}{domene}
-\geslo{parallel tasks}{vzporedne naloge}
-\geslo{task collections}{zbirke opravil}
-\geslo{parallel computation patterns}{vzorci vzporednega računanja}
-\geslo{synchronization primitives}{sinhronizacijski mehanizmi}
-\geslo{load balancing}{Izravnavanje obremenitve}
-\geslo{high-level}{visokonivojski}
-\geslo{code wrapper}{programski ovoj}
-\geslo{adjaceny list}{seznam sosednosti}
-\geslo{shared memory}{skupni pomnilnik}
-\geslo{distributed memory}{porazdeljeni pomnilnik}
-\geslo{thread race}{dirka podatkov} % TODO: Je to dober prevod?
-\geslo{vzajemna izključitev}{mutex}
-\geslo{overhead}{dodatna računska obremenitev}
-}
-
-% - ime datoteke z viri (vključno s končnico .bib), če uporabljate BibTeX
-
-\literatura{literatura.bib}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DODATNE DEFINICIJE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% naložite dodatne pakete, ki jih potrebujete
-\usepackage{algpseudocode}  % za psevdokodo
-\usepackage{algorithm}      % za algoritme
-\usepackage{algorithmicx}
-\usepackage{hyperref}
-\usepackage{listings}
+\documentclass[12pt,a4paper]{amsart}
+% ukazi za delo s slovenscino -- izberi kodiranje, ki ti ustreza
+\usepackage[slovene]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{url}
+%\usepackage[normalem]{ulem}
+\usepackage[dvipsnames,usenames]{color}
+\usepackage{graphicx}
 \usepackage{tikz}
-\usepackage{circuitikz}
-\usetikzlibrary{shapes,arrows}
+\usepackage{dsfont}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bm}
+\usepackage{float}
 
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=cyan,
-    citecolor=red
-}
-
-% Set the font size for all listings
-\lstset{basicstyle=\footnotesize\ttfamily}
-
-\algnewcommand\algorithmicto{\textbf{to}}
-\algnewcommand\algorithmicin{\textbf{in}}
-\algnewcommand\algorithmicforeach{\textbf{for each}}
-\algrenewtext{For}[3]{\algorithmicfor\ #1 $\gets$ #2\ \algorithmicto\ #3\ \algorithmicdo}
-\algdef{S}[FOR]{ForEach}[2]{\algorithmicforeach\ #1\ \algorithmicin\ #2\ \algorithmicdo}
+% ne spreminjaj podatkov, ki vplivajo na obliko strani
+\textwidth 15cm
+\textheight 24cm
+\oddsidemargin.5cm
+\evensidemargin.5cm
+\topmargin-5mm
+\addtolength{\footskip}{10pt}
+\pagestyle{plain}
+\overfullrule=15pt % oznaci predlogo vrstico
 
 
-\floatname{algorithm}{Algoritem}
-\renewcommand{\listalgorithmname}{Kazalo algoritmov}
+% ukazi za matematicna okolja
+\theoremstyle{definition} % tekst napisan pokoncno
+\newtheorem{definicija}{Definicija}[section]
+\newtheorem{primer}[definicija]{Primer}
+\newtheorem{opomba}[definicija]{Opomba}
 
-\newcommand{\R}{\mathbb R}
-\newcommand{\N}{\mathbb N}
-\newcommand{\Z}{\mathbb Z}
-\newcommand{\C}{\mathbb C}
-\newcommand{\Q}{\mathbb Q}
-
-\lstdefinelanguage{OCaml}{
-  keywords={let,rec,if,then,else,module},
-  sensitive=true,
-  basicstyle=\ttfamily,
-  keywordstyle=\bfseries,
-  showstringspaces=false,
-  morecomment=[s]{(*}{*)},
-  morestring=[b]"
-}
-
-\lstset{
-  language=Caml,
-  frame=single,
-  numbers=left,
-  numberstyle=\tiny,
-  stepnumber=1,
-  numbersep=5pt,
-  tabsize=2,
-  breaklines=true,
-  prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
-  showtabs=false,
-  showspaces=false,
-  showstringspaces=false,
-  basicstyle=\ttfamily\small,
-  identifierstyle=\ttfamily\small,
-  commentstyle=\color{gray}\ttfamily\small,
-  keywordstyle=\color{blue}\ttfamily\small,
-  stringstyle=\color{red}\ttfamily\small
-}
+\renewcommand\endprimer{\hfill$\diamondsuit$}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ZAČETEK VSEBINE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain} % tekst napisan posevno
+\newtheorem{lema}[definicija]{Lema}
+\newtheorem{izrek}[definicija]{Izrek}
+\newtheorem{trditev}[definicija]{Trditev}
+\newtheorem{posledica}[definicija]{Posledica}
+
+
+
+% ukaz za slovarsko geslo
+\newlength{\odstavek}
+\setlength{\odstavek}{\parindent}
+\newcommand{\geslo}[2]{\noindent\textbf{#1}\hspace*{3mm}\hangindent=\parindent\hangafter=1 #2}
+
+
+% naslednje ukaze ustrezno popravi
+\newcommand{\program}{Finančna matematika} % ime studijskega programa: Matematika/Finan"cna matematika
+\newcommand{\imeavtorja}{Anej Rozman} % ime avtorja
+\newcommand{\imementorja}{~doc.~dr. Martin Raič} % akademski naziv in ime mentorja
+\newcommand{\naslovdela}{Lévijevi procesi z uporabo v financah}
+\newcommand{\letnica}{2024} %letnica diplome
+
+
+
+
 
 \begin{document}
 
+% od tod do povzetka ne spreminjaj nicesar
+\thispagestyle{empty}
+\noindent{\large
+UNIVERZA V LJUBLJANI\\[1mm]
+FAKULTETA ZA MATEMATIKO IN FIZIKO\\[5mm]
+\program\ -- 1.~stopnja}
+\vfill
+
+\begin{center}{\large
+\imeavtorja\\[2mm]
+{\bf \naslovdela}\\[10mm]
+Delo diplomskega seminarja\\[1cm]
+Mentor: \imementorja}
+\end{center}
+\vfill
+
+\noindent{\large
+Ljubljana, \letnica}
+\pagebreak
+
+\thispagestyle{empty}
+\tableofcontents
+\pagebreak
+
+\thispagestyle{empty}
+\begin{center}
+{\bf \naslovdela}\\[3mm]
+{\sc Povzetek}
+\end{center}
+% tekst povzetka v slovenscini
+
+\vfill
+\begin{center}
+{\bf Lévy processes and their use in finance}\\[3mm] % prevod slovenskega naslova dela
+{\sc Abstract}
+\end{center}
+% tekst povzetka v anglescini
+Prevod zgornjega povzetka v angle"s"cino.
+
+\vfill\noindent
+{\bf Math. Subj. Class. (2010):} 91G10 60G00 60G01  \\[1mm]
+{\bf Klju"cne besede:} Slucajni procesi, Lévijevi procesi   \\[1mm]
+{\bf Keywords:} Stochastic processes, Lévy processes
+\pagebreak
+
+
+
+% tu se zacne besedilo seminarja
 \section{Uvod}
-\cite{levy_processes}
+    Lévijev proces je slučajni proces imenovan po francoskem matematiku Paulu Lévyju, ki je bil eden od pionirjev na
+    področju verjetnosti v 20.\ stoletju. Igral je ključno vlogo pri razumevanju procesov z neodvisnimi, stacionarnimi
+    inkrementi (prvotno ime za Lévijeve procese), (dokončaj)
+
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.5\textwidth}
+            \centering
+            \includegraphics[width=1\linewidth]{C:/Users/38651/OneDrive - Univerza v Ljubljani/Desktop/Diplomski seminar/Levy-Processes/Photos/graphs/BrownGibanje.pdf}
+        \end{subfigure}%
+        \begin{subfigure}{0.5\textwidth}
+            \centering
+            \includegraphics[width=1\linewidth]{C:/Users/38651/OneDrive - Univerza v Ljubljani/Desktop/Diplomski seminar/Levy-Processes/Photos/graphs/PoissGibanje.pdf}
+        \end{subfigure}
+        \caption{Primera Trajektorij Brownovega gibanja in Poissonovega procesa}
+        \label{slika1}
+    \end{figure}
+       
+    \noindent
+    Zgornji sliki prikazujeta simulacije trajektorij Brownovega gibanja oz. Wienerjevega procesa (levo) in 
+    Poissonovega procesa (desno). Oba sta izredno pomembna v svetu financ, Poissonov proces v zavarovalništvu in Brownovo
+    gibanje pri vrednotenju finančnih instrumetnov npr. opcij. Na prvi pogled ne zgleda, kot da imata kaj dosti skupnega
+    razen dejstva da sta slučajna procesa. Brownovo gibanje ima zvezne nemonotone trajektorije, medtem ko so trajektorije 
+    Poissonovega procesa diskretne in naraščajoče. Kot pa bomo videli, oba zadoščata definiciji Lévijevega procesa. (Ponovno napiši z lepšimi besedami)
+
+
+
+\section{Neskončno deljive porazdelitve in Lévy-Khintchinova formula}
+    V tem poglavji si bomo ogledali difinicijo neskončno deljivih porazdelitev in njihovo tesno povezavo
+    z Lévijevimi procesi. Navedli in dokazali bomo izredno pomemben izrek znan kot Lévy-Khintchinova karakterizacija
+    ter pokazali, da velja za Lévijeve procese. (olepšaj in dopolni)
+    
+    
+    \begin{definicija}
+        Pravimo, da ima realno številska slučajna spremenljivka $X$ neskončno deljivo porazdelitev, če
+        za vsak $n=1,2,\dots$ obstaja zaporedje neodvisnih enako porazdeljenih slučajnih spremenljivk $(X_i)_{i=1,\dots,n}$, 
+        da velja 
+        $$
+        X \stackrel{d}{=} X_1 + X_2 + \dots X_n,
+        $$
+        kjer $\stackrel{d}{=}$ pomeni enakost v porazdelitvi.
+    \end{definicija}
+
+    \begin{definicija}
+        \textbf{(Lévijev proces)} Slučajnemu procesu $X = \{X_t \mid t \geq 0\}$ definiranem na verjetnostnemu
+        prostoru $(\Omega, \mathcal{F}, \mathds{P})$ pravimo Lévijev proces, če zadošča naslednjim pogojem:
+        \begin{enumerate}
+            \item $\mathds{P}(X_0 = 0)=1$.
+            \item Poti $X$ so $\mathds{P}$-skoraj gotovo zvezne z desne (z levimi limitami).
+            \item Za $0 \leq s \leq t$ je $X_t - X_s$ enaka v porazdelitvi kot $X_{t-s}$.
+            \item Za $0 \leq s \leq t$ je $X_t - X_s$ neodvisna od $\{X_u \mid 0 \leq u \leq s\}$.
+        \end{enumerate}
+    \end{definicija}
+
+    \begin{izrek}
+        \textbf{(Lévy-Khintchine formula)} Verjetnostna mera $\mu$ neke realno številske slučajne spremenljivke 
+        je neskončno deljiva s karakterističnim eksponentom $\Phi$,
+        $$
+        \int_{\mathbb{R}} e^{i\theta x} \mu(dx) = e^{-\Phi(\theta)},\ \text{za} \ \theta \in \mathbb{R},
+        $$
+        če in samo če obstaja trojica $(a, \sigma, \Pi)$, kjer je $a \in \mathbb{R}$, $\sigma \in 
+        \mathbb{R}$ in $\Pi$ mera na $\mathbb{R}\backslash\{0\}$, ki zadošča $\int_{\mathbb{R}}\min(1, x^2)\Pi(dx)\leq \infty$, 
+        da velja
+        $$
+        \Phi(\theta) = i a \theta + \frac{1}{2}\sigma^2\theta^2 + \int_{\mathbb{R}}(1 - e^{i\theta x} + i\theta x \mathds{1}_{(|x|<1)})\Pi(dx),
+        $$
+        za vsak $\theta \in \mathbb{R}$. Še več, trojica $(a, \sigma, \Pi)$ je enolično določena.
+    \end{izrek}
+
+    \begin{proof}
+        
+    \end{proof}
+
+% slovar
+\section*{Slovar strokovnih izrazov}
+
+%\geslo{}{}
+%
+%\geslo{}{}
+%
+
+
+% seznam uporabljene literature
+\begin{thebibliography}{99}
+
+%\bibitem{}
+
+\end{thebibliography}
+
 \end{document}
