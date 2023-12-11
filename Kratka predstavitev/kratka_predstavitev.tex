@@ -46,13 +46,23 @@
 
 \frame{\titlepage}
 
+\begin{frame}
+  \frametitle{Vsebina}
+  \begin{itemize}
+    \item <1-> Neskoncno deljive porazdelitve
+    \item <2-> Poissonovi porcesi
+    \item <3-> Levijevi procesi
+    \item <4-> (uporaba v financah)
+  \end{itemize}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Neskončno deljive porazdelitve}
   \begin{definicija}
     Pravimo, da ima realno številska slučajna spremenljivka $X$ \textit{neskončno deljivo porazdelitev}, če
-    za vsak $n \in \mathbb{N}$ obstaja zaporedje neodvisnih enako porazdeljenih slučajnih spremenljivk $(X_i)_{i=1,\dots,n}$, 
-    da velja 
+    za vsak $n \in \mathbb{N}$ obstaja zaporedje neodvisnih enako porazdeljenih 
+    slučajnih spremenljivk $(X_i)_{i=1,\dots,n}$, da velja 
     $$
     X \stackrel{d}{=} X_1 + X_2 + \dots X_n,
     $$
@@ -110,7 +120,8 @@
     mera na $\mathbb{R}\backslash\{0\}$, ki zadošča $\int_{\mathbb{R}}1 \wedge x^2 \Pi(dx)\leq \infty$, 
     da za vsak $\theta \in \mathbb{R}$ velja
     $$
-    \Phi(\theta) = ia\theta + \frac{1}{2}\sigma^2\theta^2 + \int_{\mathbb{R}}(1 - e^{i\theta x} + i\theta x {1}_{(|x|<1)})\Pi(dx).
+    \Phi(\theta) = ia\theta + \frac{1}{2}\sigma^2\theta^2 + \int_{\mathbb{R}}(1 - e^{i\theta x} 
+    + i\theta x {1}_{(|x|<1)})\Pi(dx).
     $$
     Še več, trojica $(a, \sigma, \Pi)$ je enolično določena.
   \end{izrek}
