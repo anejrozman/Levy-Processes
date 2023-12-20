@@ -77,44 +77,47 @@
 
   \end{frame}
 
-
-\begin{frame}
-  \frametitle{Nekaj zgledov}
-  \begin{zgled}
-    Normalna porazdelitev je neskončno deljiva.
-  \end{zgled}
-  \begin{center}
-    Naj bo $X \sim N(\mu, \sigma^2)$. Vemo da so linearne kombinacije neodvisnih normalno 
-    porazdeljenih slučajnih spremenljivk spet normalno porazdeljene. Torej lahko za poljuben 
-    $n\in\mathbb{N}$ zapišemo
-    $$
-      X \stackrel{d}{=} N(\frac{\mu}{n}, \frac{\sigma^2}{n}) + \dots + N(\frac{\mu}{n}, \frac{\sigma^2}{n}).
-    $$
-  \end{center}
-\end{frame}
-
-
 \begin{frame}
   \frametitle{Nekaj zgledov}
   \begin{zgled}
     Poissonova porazdelitev je neskončno deljiva.
   \end{zgled}
-  \begin{center}
-    Naj bo $X \sim \text{Pois}(\lambda)$. Vemo da so linearne kombinacije neodvisnih Poissonovo
+  \pause
+    Naj bo $X \sim \text{Pois}(\lambda)$. Vemo da so vsote neodvisnih Poissonovo
     porazdeljenih slučajnih spremenljivk spet Poissonovo porazdeljene. Torej lahko za poljuben 
     $n\in\mathbb{N}$ zapišemo
     $$
       X \stackrel{d}{=} \text{Pois}(\frac{\lambda}{n}) + \dots + \text{Pois}(\frac{\lambda}{n}).
     $$
-  \end{center}
+  \pause
+  Z enakim razmislekom lahko pokažemo, da je Normalna porazdelitev neskončno deljiva.
 \end{frame}
+
+\begin{frame}
+  \frametitle{Nekaj zgledov}
+  \begin{zgled}
+    $ X\sim \textit{U}([0, 1])$ ni neskončno deljiva.
+  \end{zgled}
+  \pause
+  Recimo, da je $X$ neskončno deljiva. Potem za dani $n \in \mathbb{N}$ obstajajo
+  neodvisne enako porazdeljene slučajne spremenljivke $X_1, \dots, X_n$, da velja
+  $$
+  X \stackrel{d}{=} X_1 + \dots + X_n.
+  $$
+  \pause
+  <--- Naprej na tabli
+
+
+
+\end{frame}
+
 
 \begin{frame}
   \begin{lema}
     Linearne kombinacije neodvisnih neskončno deljivih slučajnih spremenljivk so neskončno deljive slučajne spremenljivke.
 \end{lema}
 
-
+\pause
 \begin{proof}
     Naj bodo $X_1, X_2, ..., X_m$ neodvisne neskončno deljive s. s. Tedaj lahko za vsak $n \in \mathbb{N}$ 
     zapišemo $X_i \stackrel{d}{=} X_{i_1} + \dots + X_{i_n}$, torej za
@@ -136,7 +139,7 @@
     $\sigma \in \mathbb{R}^+$ in $\nu$ mera, ki zadošča pogoju $\int_{\mathbb{R}^+}1 \wedge x^2 \nu(dx)\leq \infty,$
     in sicer paru $(\sigma, \nu)$ priredimo karakteristično funkcijo $\varphi_{\sigma, \nu}(t) = e^{-\theta(t)}$,
     $$
-    \theta(t) = \left(\sigma i t + \int_{\mathbb{R}^+}(1 - e^{-i t x}) \nu(dx)\right).
+    \theta(t) = \left(\sigma i t + \int_{(0, \infty)}(1 - e^{-i t x}) \nu(dx)\right).
     $$
     Ta predpis predstavlja bijekcijo med omenjenimi pari  $(\sigma, \nu)$ in neskončno deljivimi porazdelitvami na $\mathbb{R}^+$.
   \end{izrek}
@@ -144,7 +147,20 @@
 
 \begin{frame}
   \frametitle{Poissonova porazdelitev}
-  
+  Določimo par $(\sigma, \nu)$ za Poissonovo porazdelitev.
+  \pause
+  Vemo de je karakteristična funkcija Poissonove porazdelitve enaka
+  $$
+  \varphi(t) = \exp\left[\lambda(e^{it} - 1)\right].
+  $$
+  \pause
+  Po Lévy-Hinčinovi formuli pa je oblike 
+  \begin{align*}
+  \varphi(t) &= \exp\left[-\sigma it - \int_{(0, \infty)}(1 - e^{-itx})\nu(dx)\right]= \\
+             &= \exp\left[-\sigma it + \int_{(0, \infty)}(e^{-itx} - 1)\nu(dx)\right].
+  \end{align*}
+  \pause
+  Vidimo lahko, da je $\sigma = 0$ in $\nu = \lambda \delta_1$.
 \end{frame}
 
 \end{document}
