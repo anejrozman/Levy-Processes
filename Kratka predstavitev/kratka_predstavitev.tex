@@ -49,14 +49,18 @@
 \frame{\titlepage}
 
 \begin{frame}
-  \frametitle{Vsebina}
-  \begin{itemize}
-    \item <1-> Neskončno deljive porazdelitve
-    \item <2-> Lévijev proces
-    \item <3-> (Uporaba v financah, Mertonov difuzijski model s skoki ?)
-  \end{itemize}
+  \frametitle{Lévijev proces}
+  \begin{definicija}
+      Slučajnemu procesu $X = \{X_t \mid t \geq 0\}$ definiranem na verjetnostnemu
+      prostoru $(\Omega, \mathcal{F}, \mathds{P})$ pravimo \textit{Lévijev proces}, če zadošča naslednjim pogojem:
+      \begin{enumerate}
+          \item $\mathds{P}(X_0 = 0)=1$.
+          \item Trajektorije $X$ so $\mathds{P}$-skoraj gotovo zvezne z desne (z levimi limitami).
+          \item Za $0 \leq s \leq t$ je $X_t - X_s$ enako porazdeljena kot $X_{t-s}$.
+          \item Za $0 \leq s \leq t$ je $X_t - X_s$ neodvisna od $\{X_u \mid 0 \leq u \leq s\}$.
+      \end{enumerate}
+  \end{definicija}
 \end{frame}
-
 
 \begin{frame}
   \frametitle{Neskončno deljive porazdelitve}
@@ -112,12 +116,13 @@
 
 
 \begin{proof}
-    Za vsak $n \in \mathbb{N}$ lahko zapišemo $X_i \stackrel{d}{=} X_{i_1} + \dots + X_{i_n}$, torej za
-    $a_1, \dots, a_n \in \mathbb{R}$ lahko $a_1X_1 + \dots + a_nX_n$ zapišemo kot 
+    Naj bodo $X_1, X_2, ..., X_m$ neodvisne neskončno deljive s. s. Tedaj lahko za vsak $n \in \mathbb{N}$ 
+    zapišemo $X_i \stackrel{d}{=} X_{i_1} + \dots + X_{i_n}$, torej za
+    $a_1, \dots, a_m \in \mathbb{R}$ lahko $a_1X_1 + \dots + a_mX_m$ zapišemo kot 
     \begin{align*}
-        a_1X_1 + \dots + a_nX_n &\stackrel{d}{=} \\
-                                &\stackrel{d}{=} a_1(X_{1_1} + \dots + X_{1_n}) + \dots + a_n(X_{n_1} + \dots + X_{n_n}) \\
-                                &\stackrel{d}{=} \sum_{i=1}^na_iX_{i_1} + \dots + \sum_{i=1}^na_iX_{i_n}.
+        a_1X_1 + \dots + a_mX_m &\stackrel{d}{=} \\
+                                &\stackrel{d}{=} a_1(X_{1_1} + \dots + X_{1_n}) + \dots + a_m(X_{m_1} + \dots + X_{m_n}) \\
+                                &\stackrel{d}{=} \sum_{i=1}^ma_iX_{i_1} + \dots + \sum_{i=1}^ma_iX_{i_n}.
     \end{align*}
 \end{proof}
 \end{frame}
@@ -126,29 +131,20 @@
 \begin{frame}
   \frametitle{Lévy-Hinčinova formula}
   \begin{izrek}
-    \textbf{(Lévy-Hinčinova formula)} Na $\mathbb{R}^+$ imamo bijekcijo med pari oblike
-    $(\sigma, \nu)$ in množico momentno rodovnih funkcij neskončno deljivih porazdelitev,
-    kjer je $\sigma \in \mathbb{R}^+$ in $\nu$ mera, ki zadošča pogoju $\int_{\mathbb{R}^+}1 \wedge x^2 \nu(dx)\leq \infty.$
-    Momentno rodovna funkcija, ki ustreza paru $(\sigma, \nu)$ je oblike $M_{\sigma, \nu}(t) = e^{-\theta(t)}$,
+    \textbf{(Lévy-Hinčinova formula)} 
+    Neskončno deljive porazdelitve na $\mathbb{R}^+$ je možno opisati s pari $(\sigma, \nu)$, kjer je 
+    $\sigma \in \mathbb{R}^+$ in $\nu$ mera, ki zadošča pogoju $\int_{\mathbb{R}^+}1 \wedge x^2 \nu(dx)\leq \infty,$
+    in sicer paru $(\sigma, \nu)$ priredimo karakteristično funkcijo $\varphi_{\sigma, \nu}(t) = e^{-\theta(t)}$,
     $$
-      \theta(t) = \left(\sigma t + \int_{\mathbb{R}^+}1 - e^{-tx} \nu(dx)\right)
+    \theta(t) = \left(\sigma i t + \int_{\mathbb{R}^+}(1 - e^{-i t x}) \nu(dx)\right).
     $$
-    
+    Ta predpis predstavlja bijekcijo med omenjenimi pari  $(\sigma, \nu)$ in neskončno deljivimi porazdelitvami na $\mathbb{R}^+$.
   \end{izrek}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Lévijev proces}
-  \begin{definicija}
-      Slučajnemu procesu $X = \{X_t \mid t \geq 0\}$ definiranem na verjetnostnemu
-      prostoru $(\Omega, \mathcal{F}, \mathds{P})$ pravimo \textit{Lévijev proces}, če zadošča naslednjim pogojem:
-      \begin{enumerate}
-          \item $\mathds{P}(X_0 = 0)=1$.
-          \item Trajektorije $X$ so $\mathds{P}$-skoraj gotovo zvezne z desne (z levimi limitami).
-          \item Za $0 \leq s \leq t$ je $X_t - X_s$ enako porazdeljena kot $X_{t-s}$.
-          \item Za $0 \leq s \leq t$ je $X_t - X_s$ neodvisna od $\{X_u \mid 0 \leq u \leq s\}$.
-      \end{enumerate}
-  \end{definicija}
+  \frametitle{Poissonova porazdelitev}
+  
 \end{frame}
 
 \end{document}
